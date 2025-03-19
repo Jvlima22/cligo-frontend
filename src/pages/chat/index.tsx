@@ -77,24 +77,22 @@ const Chat = () => {
                 <UsersHorizontal usernameColor = 'black' />
             </View>
 
-            <ScrollView>
-                {/* Chat List Section */}
-                <FlatList 
-                    style={style.list}
-                    data={filteredUsers}
-                    keyExtractor={(item) => item.name}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => navigateToChat(item.name)} style={style.chatItem}>
-                            {/* Renderizar a imagem de perfil */}
-                            <Image source={item.image} style={style.userIcon} />
-                            <View style={style.chatTextContainer}>
-                                <Text style={style.userName}>{item.name}</Text>
-                                <Text style={style.userMessage}>{item.message}</Text>
-                            </View>
-                        </TouchableOpacity>
-                    )}
-                />
-            </ScrollView>
+            {/* Chat List Section */}
+            <FlatList 
+                style={style.list}
+                data={filteredUsers}
+                keyExtractor={(item) => item.name}
+                renderItem={({ item }) => (
+                    <TouchableOpacity onPress={() => navigateToChat(item.name)} style={style.chatItem}>
+                        {/* Renderizar a imagem de perfil */}
+                        <Image source={item.image} style={style.userIcon} />
+                        <View style={style.chatTextContainer}>
+                            <Text style={style.userName}>{item.name}</Text>
+                            <Text style={style.userMessage}>{item.message}</Text>
+                        </View>
+                    </TouchableOpacity>
+                )}
+            />
             <BottomTab />
         </View>
     );

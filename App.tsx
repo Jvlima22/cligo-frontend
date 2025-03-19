@@ -37,7 +37,6 @@ type RootStackParamList = {
   RegisterPj: undefined;
   Recovery: undefined;
   Interesse1: undefined;
-  Interesse2: undefined;
   Explorer: undefined;
   Mapa: undefined;
   Chat: undefined;
@@ -73,7 +72,6 @@ export default function App() {
         <Stack.Screen name="RegisterPj" component={RegisterPj} />
         <Stack.Screen name="Recovery" component={Recovery} />
         <Stack.Screen name="Interesse1" component={Interesse1} />
-        <Stack.Screen name="Interesse2" component={Interesse2} />
         <Stack.Screen name="Explorer" component={Explorer} />
         <Stack.Screen name="Mapa" component={Mapa} />
         <Stack.Screen name="Chat" component={Chat} />

@@ -7,7 +7,7 @@ import { ButtonBack } from '../buttonBack';
 
 type RootStackParamList = {
     Cardapio: undefined;
-    Chat: undefined;
+    ChatScreen: undefined;
     Avaliacoes: undefined;
     Mapa: undefined;
 };
@@ -50,7 +50,7 @@ const TopProfilePj = () => {
 
             <TouchableOpacity 
                 style={styles.button} 
-                onPress={() => navigation.navigate('Chat')}
+                onPress={() => navigation.navigate('ChatScreen')}
             >
                 <FontAwesome name="comments" size={24} color="#D3E3E7" />
                 <Text style={styles.buttonText}>Chat</Text>

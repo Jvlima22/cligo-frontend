@@ -72,18 +72,16 @@ const ChatScreen = () => {
                 <Image source={displayedUserImage} style={style.userImage} />
                 <Text style={style.header}>{userName}</Text>
             </View>
-
-            <ScrollView style={style.messagesContainer}>
-                <FlatList
-                    data={messages}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => (
-                        <View style={style.messageContainer}>
-                            <Text style={style.message}>{item}</Text>
-                        </View>
-                    )}
-                />
-            </ScrollView>
+    
+            <FlatList style={style.messagesContainer}
+                data={messages}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => (
+                    <View style={style.messageContainer}>
+                        <Text style={style.message}>{item}</Text>
+                    </View>
+                )}
+            />
 
             <View style={style.inputContainer}>
                 <TextInput

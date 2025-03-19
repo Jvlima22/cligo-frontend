@@ -76,4 +76,26 @@ export const style = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
     },
+    buttonNext: {
+        marginTop: 20,
+        marginLeft: 300
+    },  
+    modalOverlay: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+    },
+    modalContent: {
+        backgroundColor: "#4CAF50",
+        padding: 20,
+        borderRadius: 10,
+        alignItems: "center",
+    },
+    modalText: {
+        color: "white",
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+
 });

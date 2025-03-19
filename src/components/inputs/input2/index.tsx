@@ -60,7 +60,7 @@ export const Input = forwardRef((Props: Props, ref: LegacyRef<TextInput> | null)
     const iconColorValue = IconColor === 'white' ? themes.colors.white : themes.colors.gray;
 
     return (
-        <Fragment>
+        <>
             {title && <Text style={style.titleInput}>{title}</Text>}
             <View style={[style.boxInput, { paddingLeft: calculatedSizePaddingLeft() }]}>
                 {IconLeft && IconLeftName && (
@@ -78,7 +78,7 @@ export const Input = forwardRef((Props: Props, ref: LegacyRef<TextInput> | null)
                     </TouchableOpacity>
                 )}
             </View>
-        </Fragment>
+        </>
     );
 });
 

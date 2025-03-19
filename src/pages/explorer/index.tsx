@@ -1,4 +1,4 @@
-import { ScrollView, View, Image, TouchableOpacity, FlatList, Text } from 'react-native';
+import { View, Image, TouchableOpacity, FlatList, Text } from 'react-native';
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from 'react';
 import Logo from '../../assets/Cligo.png';
@@ -34,18 +34,17 @@ const Explorer = () => {
 
     const generateImageList = () => {
         return [
-            { id: '1', name: "clayvonsilva", image: require('../../assets/person8.png'), title: "Que evento incrível!", likes: 2.679, comments: 32, date: "14/07/2022"},
-            { id: '2', name: "jvlima22_", image: require('../../assets/person9.png'), title: "Prosperidade não é ter, é fazer crescer!", likes: 521, comments: 12, date: "30/08/2023"},
-            { id: '3', name: "iamgabesk", image: require('../../assets/person10.png'), title: "🧑🧑‍🦲👻", likes: 65, comments: 6, date: "27/04/2024"},
-            { id: '4', name: "anavi003", image: require('../../assets/person11.png'), title: "👻", likes: 30, comments: 5, date: "04/10/2023"},
+            { id: '1', name: "clayvonsilva", image: require('../../assets/person8.png'), title: "Que evento incrível!", likes: 2.679, comments: 32, date: "14/07/2022" },
+            { id: '2', name: "jvlima22_", image: require('../../assets/person9.png'), title: "Prosperidade não é ter, é fazer crescer!", likes: 521, comments: 12, date: "30/08/2023" },
+            { id: '3', name: "iamgabesk", image: require('../../assets/person10.png'), title: "🧑🧑‍🦲👻", likes: 65, comments: 6, date: "27/04/2024" },
+            { id: '4', name: "anavi003", image: require('../../assets/person11.png'), title: "👻", likes: 30, comments: 5, date: "04/10/2023" },
         ];
     };
 
-    // Chamada da função para gerar a lista de imagens
     const imageList = generateImageList();
 
     return (
-        <ScrollView contentContainerStyle={style.container}>
+        <View style={style.container}>
             {/* Top Section with Logo and Icon */}
             <View style={style.boxTop}>
                 <Image
@@ -69,7 +68,7 @@ const Explorer = () => {
             {/* Carrossel Vertical */}
             <FlatList
                 data={imageList}
-                keyExtractor={(item: { id: any; }) => item.id}
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <View style={style.verticalCarouselItem}>
                         <View style={style.imageContainer}>
@@ -92,8 +91,6 @@ const Explorer = () => {
                         {/* Detalhes da postagem */}
                         <View style={style.postDetails}>
                             <Text style={style.likes}>{item.likes} Curtidas</Text>
-
-                            {/* Título formatado como @user + título */}
                             <Text style={style.title}>@{item.name} {item.title}</Text>
                             <Text style={style.comments}>{item.comments} Comentários</Text>
                             <Text style={style.date}>{item.date}</Text>
@@ -101,11 +98,11 @@ const Explorer = () => {
                     </View>
                 )}
                 showsVerticalScrollIndicator={false}
-                style={style.verticalCarousel}
+                contentContainerStyle={style.verticalCarousel}
             />
 
-            <BottomTab/>
-        </ScrollView>
+            <BottomTab />
+        </View>
     );
 };
 

@@ -21,7 +21,7 @@ const reviews = [
     { id: 1, name: "Gabriel Sanches", rating: 5, comment: "Bar incrível com comida deliciosa e stand up divertido.", image: require('../../../assets/person6.png') },
     { id: 2, name: "Clayvon Silva", rating: 4, comment: "Impressionado com a comida, o stand up e o ambiente deste bar.", image: require('../../../assets/person3.png') },
     { id: 3, name: "Josué Lima", rating: 5, comment: "Ótima comida, excelente entretenimento e ambiente agradável.", image: require('../../../assets/person4.png') },
-    { id: 4, name: "Vinícius", rating: 4, comment: "Novo local favorito com comida incrível, stand up divertido e ambiente acolhedor.", image: require('../../../assets/person2.png') }
+    { id: 4, name: "Vinícius ", rating: 4, comment: "Novo local favorito com comida incrível, stand up divertido e ambiente acolhedor.", image: require('../../../assets/person2.png') }
 ];
 
 const Avaliacoes = () => {

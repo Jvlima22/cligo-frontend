@@ -13,7 +13,7 @@ type RootStackParamList = {
   Home: undefined;
   Login: undefined;
   Register: undefined;
-  RegisterPj: undefined
+  RegisterPj: undefined;
 };
 
 const Register = () => {
@@ -25,34 +25,9 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [phone, setPhone] = useState('');
   const [cpf, setCpf] = useState('');
+  const [cnpj, setCnpj] = useState('');
 
-  const baseURL = 'http://192.168.15.25:8080/auth'; 
-
-  // Função para verificar se o email já está registrado
-  const checkEmailExists = async (email: string) => {
-    try {
-      console.log("Verificando se o email existe..."); // Adicionando log de depuração
-      const response = await fetch(`${baseURL}/check-email?email=${email}`);
-      
-      // Verificando o status da resposta
-      if (!response.ok) {
-        throw new Error(`Erro ao verificar email. Status: ${response.status}`);
-      }
-
-      const emailExists = await response.json();
-      console.log("Resposta do servidor:", emailExists); // Adicionando log de depuração para ver a resposta
-
-      // Verifique se o campo 'exists' é um booleano indicando a existência do email
-      if (emailExists.exists) {
-        alert('Email já cadastrado!');
-      } else {
-        handleRegister();
-      }
-    } catch (error) {
-      console.error('Erro ao verificar email:', error); // Log mais detalhado do erro
-      alert('Erro ao verificar o email. Tente novamente mais tarde.');
-    }
-  };
+  const baseURL = 'http://192.168.15.25:8080/auth/register'; // URL do backend
 
   // Função para registrar o usuário
   const handleRegister = async () => {
@@ -62,29 +37,25 @@ const Register = () => {
       password,
       phone,
       cpf,
+      cnpj: cnpj || null,
     };
 
-    try {
-      const response = await fetch(`${baseURL}/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+    const response = await fetch(baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
 
-      // Verifique se a resposta foi bem-sucedida
-      if (!response.ok) {
-        throw new Error('Falha ao registrar');
-      }
-
-      const result = await response.json();
-      console.log(result);
-      navigation.navigate('Login');
-    } catch (error) {
-      console.error(error);
+    if (!response.ok) {
       alert('Falha ao registrar. Tente novamente mais tarde.');
+      return;
     }
+
+    const result = await response.json();
+    console.log(result); // Exibe o resultado no console, você pode usar para debug
+    navigation.navigate('Login');
   };
 
   return (
@@ -98,9 +69,9 @@ const Register = () => {
         <Text style={style.text}>Faça seu cadastro para acessar o Cligo!</Text>
         <Text style={style.textBottom}>
           Registre-se como empresa
-        <Text 
-              onPress={() => navigation.navigate('RegisterPj')}
-              style={{ color: themes.colors.primary }}> aqui!
+          <Text 
+            onPress={() => navigation.navigate('RegisterPj')}
+            style={{ color: themes.colors.primary }}> aqui!
           </Text>
         </Text>
       </View>
@@ -146,7 +117,7 @@ const Register = () => {
         <View style={style.Button}>
           <Button
             text="Cadastrar"
-            onPress={() => checkEmailExists(email)} 
+            onPress={handleRegister}
           />
         </View>  
       </View>
